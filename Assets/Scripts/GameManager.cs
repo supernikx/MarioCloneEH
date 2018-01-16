@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     public GameObject pauseScreen;
     public GameObject optionsMenu, pauseMenu;
     private bool isPaused;
+    private int Marcoculo;
 
     private void Start()
     {
