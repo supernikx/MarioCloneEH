@@ -4,13 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-	GameObject[] sas = new GameObject[4000];
-
     public GameObject gameOverScreen;
     public GameObject pauseScreen;
     public GameObject optionsMenu, pauseMenu;
     private bool isPaused;
-    private int Marcoculo;
 
     private void Start()
     {
