@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class Player : Unit
 {
     //variabili per il settaggio del player
+
+    public bool isFlower = false;
+
     [HideInInspector]
     public bool isBig, changeSize;
     public Vector3 little,big;
