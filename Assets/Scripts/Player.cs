@@ -7,9 +7,12 @@ public class Player : Unit
 {
     //variabili per il settaggio del player
 
-    public bool isFlower = false;
+    private bool isRight;
+    public GameObject fireball;
 
     [HideInInspector]
+
+    public bool isFlower = false;
     public bool isBig, changeSize;
     public Vector3 little,big;
     int doubleJump = 0;
@@ -132,12 +135,29 @@ public class Player : Unit
             else if (Input.GetKey(KeyCode.A))
             {
                 tr.position += new Vector3(movementSpeed * Time.deltaTime, 0, 0);
+                isRight = false;
             }
             //Movimento destra mario
             else if (Input.GetKey(KeyCode.D))
             {
                 tr.position += new Vector3(-movementSpeed * Time.deltaTime, 0, 0);
+                isRight = true;
             }
+
+            if(Input.GetKeyDown(KeyCode.F) && isFlower == true)
+            {
+                if (isRight)
+                {
+                    
+                        
+                    Instantiate(fireball, tr.position + new Vector3(-1, 0, 0), Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(fireball, tr.position + new Vector3(1, 0, 0), Quaternion.identity);
+                }
+            }
+
         }
         else if (name == "Luigi")
         {
