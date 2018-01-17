@@ -9,6 +9,7 @@ TagManager:
   - player
   - enemyhead
   - block
+  - fireball
   layers:
   - Default
   - TransparentFX

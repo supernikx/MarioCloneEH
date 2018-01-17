@@ -224,5 +224,13 @@ public class Enemy : Unit {
                 p.Die();
             }
         }
+        if (collision.gameObject.tag == "fireball")
+        {
+            if (canDie)
+            {
+                Die();
+                Destroy(collision.gameObject);
+            }
+        }
     }
 }

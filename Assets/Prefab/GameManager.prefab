@@ -54,6 +54,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player2: {fileID: 114284913604326512, guid: 81933e9e568876f4d9855cac06c70ddd, type: 2}
   player2SpawnOffset: {x: 1, y: 0, z: 0}
+  add: {fileID: 0}
+  disable: {fileID: 0}
+  scr: 0
 --- !u!114 &114617682579071126
 MonoBehaviour:
   m_ObjectHideFlags: 1
