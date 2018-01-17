@@ -148,13 +148,13 @@ public class Player : Unit
             {
                 if (isRight)
                 {
-                    
-                        
-                    Instantiate(fireball, tr.position + new Vector3(-1, 0, 0), Quaternion.identity);
+                    FireBallScript ball=Instantiate(fireball, tr.position + new Vector3(-1, 0, 0), Quaternion.identity).GetComponent<FireBallScript>();
+                    ball.Shoot(isRight);
                 }
                 else
                 {
-                    Instantiate(fireball, tr.position + new Vector3(1, 0, 0), Quaternion.identity);
+                    FireBallScript ball=Instantiate(fireball, tr.position + new Vector3(1, 0, 0), Quaternion.identity).GetComponent<FireBallScript>();
+                    ball.Shoot(isRight);
                 }
             }
 

@@ -8,7 +8,7 @@ public class FireBallScript : MonoBehaviour {
     private bool right;
     public float xforce, yforce;
 
-    public void Start()
+    public void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }	
