@@ -99,7 +99,6 @@ public class Player : Unit
             SaveData.instance.luigi_datastored = true;
         }
     }
-
     //cambiare le dimensioni del player tra grande e piccolo
     private void ChangeSize()
     {
@@ -241,4 +240,10 @@ public class Player : Unit
         canControll = true;
     }
 
+    public Nome nome = Nome.variabile1;
+}
+
+public enum Nome
+{
+    variabile1,variabile2
 }
