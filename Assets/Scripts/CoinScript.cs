@@ -31,6 +31,5 @@ public class CoinScript : MonoBehaviour {
                 p.life++;
             }
         }
-
     }
 }
