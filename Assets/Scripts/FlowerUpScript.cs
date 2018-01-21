@@ -15,16 +15,19 @@ public class FlowerUpScript : MonoBehaviour {
         if(other.gameObject.tag == "player")
         {
             p = other.gameObject.GetComponent<Player>();
-            p.isFlower = true;
-            StartCoroutine(DisablePowerUp());
-            rend.enabled = false;
+            if (p.status == PlayerStatus.big)
+            {
+                p.status = PlayerStatus.flower;
+                StartCoroutine(DisablePowerUp());
+                rend.enabled = false;
+            }
         }
     }
 
     private IEnumerator DisablePowerUp()
     {
         yield return new WaitForSeconds(seconds: powerUpDuration);
-        p.isFlower = false;
+        p.status = PlayerStatus.big;
         gameObject.SetActive(false);
     }
 }

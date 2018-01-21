@@ -37,7 +37,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1696799919907224}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.55, y: 0.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -99,7 +99,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &114451118623164630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,11 +115,14 @@ MonoBehaviour:
   life: 10
   isAlive: 1
   movementSpeed: 10
-  jumpforce: 900
+  jumpforce: 1200
   startposition: {x: 0, y: 0, z: 0}
+  fireball: {fileID: 1372303304848406, guid: f29a5897399e57448867f181352247e1, type: 2}
+  isFlower: 0
   isBig: 0
   changeSize: 0
-  little: {x: 0.9, y: 0.7, z: 1}
+  status: 0
+  small: {x: 0.9, y: 0.7, z: 1}
   big: {x: 1, y: 1, z: 1}
   deathTimer: 2
   score: 0

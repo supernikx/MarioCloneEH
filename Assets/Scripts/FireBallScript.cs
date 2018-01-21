@@ -26,42 +26,45 @@ public class FireBallScript : MonoBehaviour {
             rb.AddForce(1 * 700, 1 * 300, 0);
         }
     }
+
+    private void DestroyBall()
+    {
+        Destroy(gameObject);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         bounces++;
-        if (right)
+        switch (collision.gameObject.tag)
         {
-            if (collision.gameObject.tag == "platform")
-            {
-                rb.velocity = new Vector3(0, 0, 0);
-                rb.AddForce(-1 * xforce, 1 * yforce, 0);
-            }
-            else
-            {
+            case "platform":
+                if (right)
+                {
+                    rb.velocity = new Vector3(0, 0, 0);
+                    rb.AddForce(-1 * xforce, 1 * yforce, 0);
+                }
+                else
+                {
+                    rb.velocity = new Vector3(0, 0, 0);
+                    rb.AddForce(1 * xforce, 1 * yforce, 0);
+                }
+                break;
+            case "enemy":
+                Enemy e = collision.gameObject.GetComponent<Enemy>();
+                if (e.canDie)
+                {
+                    e.Die();
+                }
+                DestroyBall();
+                break;
+            default:
                 bounces = 5;
-            }
-
-            if (bounces > 4)
-            {
-                Destroy(gameObject);
-            }
+                break;
         }
-        else
-        {
-            if (collision.gameObject.tag == "platform")
-            {
-                rb.velocity = new Vector3(0, 0, 0);
-                rb.AddForce(1 * xforce, 1 * yforce, 0);
-            }
-            else
-            {
-                bounces = 5;
-            }
 
-            if (bounces > 4)
-            {
-                Destroy(gameObject);
-            }
+        if (bounces > 4)
+        {
+            DestroyBall();
         }
     }
 }

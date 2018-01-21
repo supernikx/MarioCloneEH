@@ -6,11 +6,13 @@ public class SaveData : MonoBehaviour {
     [HideInInspector]
     public static SaveData instance;
     [HideInInspector]
-    public bool mario_isBig,luigi_isBig, mario_datastored,luigi_datastored,player2spawned;
+    public bool mario_datastored,luigi_datastored,player2spawned;
     [HideInInspector]
     public int mario_life,mario_score,mario_coins, luigi_life, luigi_score,luigi_coins;
     [HideInInspector]
     public int levelreached;
+    [HideInInspector]
+    public PlayerStatus mario_status, luigi_status;
 
     //non distrugge l'oggetto tra una scena e l'altra
     void Awake()

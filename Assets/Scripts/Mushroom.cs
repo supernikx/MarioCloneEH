@@ -10,8 +10,11 @@ public class Mushroom : MonoBehaviour {
         {
             Player p = other.gameObject.GetComponent<Player>();
             gameObject.SetActive(false);
-            p.isBig = true;
-            p.changeSize = true;
+            if (p.status == PlayerStatus.small)
+            {
+                p.status = PlayerStatus.big;
+                p.changeSize = true;
+            }
             p.score += 100;
         }
     }

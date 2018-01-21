@@ -34,7 +34,7 @@ public class BlockScript : MonoBehaviour {
                 p.score += points;
                 oneTime = false;
             }
-            else if (collision.contacts[0].normal.y == 1 && !oneTime && p.isBig)
+            else if (collision.contacts[0].normal.y == 1 && !oneTime && p.status==PlayerStatus.big)
             {
                 gameObject.SetActive(false);
                 p.score += points;

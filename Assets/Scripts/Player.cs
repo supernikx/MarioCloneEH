@@ -11,10 +11,9 @@ public class Player : Unit
     public GameObject fireball;
 
     [HideInInspector]
-
-    public bool isFlower = false;
-    public bool isBig, changeSize;
-    public Vector3 little,big;
+    public bool changeSize;
+    public PlayerStatus status;
+    public Vector3 small,big;
     int doubleJump = 0;
     public int deathTimer=2;
     [HideInInspector]
@@ -23,8 +22,8 @@ public class Player : Unit
     // Use this for initialization
     void Start()
     { 
-        isBig = false;
-        tr.localScale = little;
+        status = PlayerStatus.small;
+        tr.localScale = small;
         canControll = true;
         isJump = false;           
         rb = GetComponent<Rigidbody>();
@@ -67,14 +66,14 @@ public class Player : Unit
         {
             life = SaveData.instance.mario_life;
             score = SaveData.instance.mario_score;
-            isBig = SaveData.instance.mario_isBig;
+            status = SaveData.instance.mario_status;
             coins = SaveData.instance.mario_coins;
         }
         else if (name == "Luigi")
         {
                 life = SaveData.instance.luigi_life;
                 score = SaveData.instance.luigi_score;
-                isBig = SaveData.instance.luigi_isBig;
+                status = SaveData.instance.luigi_status;
                 coins = SaveData.instance.luigi_coins;
         }
     }
@@ -85,7 +84,7 @@ public class Player : Unit
         if (name == "Mario")
         {
             SaveData.instance.mario_life = life;
-            SaveData.instance.mario_isBig = isBig;
+            SaveData.instance.mario_status = status;
             SaveData.instance.mario_score = score;
             SaveData.instance.mario_coins = coins;
             SaveData.instance.mario_datastored = true;
@@ -93,7 +92,7 @@ public class Player : Unit
         }else if (name == "Luigi")
         {
             SaveData.instance.luigi_life = life;
-            SaveData.instance.luigi_isBig = isBig;
+            SaveData.instance.luigi_status = status;
             SaveData.instance.luigi_score = score;
             SaveData.instance.luigi_coins = coins;
             SaveData.instance.luigi_datastored = true;
@@ -103,13 +102,17 @@ public class Player : Unit
     private void ChangeSize()
     {
         changeSize = false;
-        if (isBig)
+        if (status == PlayerStatus.big)
         {
             tr.localScale = big;
         }
-        else
+        else if (status == PlayerStatus.small)
         {
-            tr.localScale = little;
+            tr.localScale = small;
+        }
+        else if (status == PlayerStatus.flower)
+        {
+            tr.localScale = big;
         }
     }
 
@@ -143,7 +146,7 @@ public class Player : Unit
                 isRight = true;
             }
 
-            if(Input.GetKeyDown(KeyCode.F) && isFlower == true)
+            if(Input.GetKeyDown(KeyCode.F) && status==PlayerStatus.flower)
             {
                 if (isRight)
                 {
@@ -203,7 +206,6 @@ public class Player : Unit
                     isJump = false;
                 }
                 break;
-            
             //respawna il player che è caduto dalla mappa
             case "Respawn":
                 Die();
@@ -224,7 +226,7 @@ public class Player : Unit
         }
         else
         {
-            isBig = false;
+            status = PlayerStatus.small;
             changeSize = true;
             StartCoroutine(Respawn(deathTimer));
         }
@@ -239,11 +241,9 @@ public class Player : Unit
         render.enabled = true;
         canControll = true;
     }
-
-    public Nome nome = Nome.variabile1;
 }
 
-public enum Nome
+public enum PlayerStatus
 {
-    variabile1,variabile2
+    small,big,flower
 }

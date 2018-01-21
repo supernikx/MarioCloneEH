@@ -207,9 +207,15 @@ public class Enemy : Unit {
                     p.Jump();
                 }
                 //se il nemico colpisce il player ed è grande allora diventa piccolo
-                else if (p.isBig)
+                else if (p.status==PlayerStatus.big)
                 {
-                    p.isBig = false;
+                    p.status = PlayerStatus.small;
+                    p.changeSize = true;
+                }
+                //se il nemico colpisce il player ed è fiore diventa grande
+                else if (p.status == PlayerStatus.flower)
+                {
+                    p.status = PlayerStatus.big;
                     p.changeSize = true;
                 }
                 //se il nemico colpisce il player ed è piccoo muore
@@ -222,14 +228,6 @@ public class Enemy : Unit {
             else
             {
                 p.Die();
-            }
-        }
-        if (collision.gameObject.tag == "fireball")
-        {
-            if (canDie)
-            {
-                Die();
-                Destroy(collision.gameObject);
             }
         }
     }
